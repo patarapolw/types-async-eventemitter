@@ -1,0 +1,25 @@
+{
+  "name": "types-async-eventemitter",
+  "version": "0.2.4",
+  "description": "TypeScript definition for async-eventemitter",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "tsc -p tsconfig.lib.json"
+  },
+  "keywords": [
+    "async-eventemitter",
+    "eventemitter",
+    "types"
+  ],
+  "author": "Pacharapol Withayasakpunt",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patarapolw/types-async-eventemitter.git"
+  },
+  "dependencies": {
+    "@types/events": "^3.0.0"
+  }
+}
