@@ -1,6 +1,6 @@
 /**
- * An EventEmitter that supports serial execution of asynchronous event listeners. 
- * It also supports event listeners without callbacks (synchronous), as well as 
+ * An EventEmitter that supports serial execution of asynchronous event listeners.
+ * It also supports event listeners without callbacks (synchronous), as well as
  * interrupting the call-chain (similar to the DOM's e.stopPropagation()).
  * @module async-eventemitter
  */
@@ -8,7 +8,7 @@ declare module "async-eventemitter" {
   import { EventEmitter } from "events";
 
   /**
-   * The API and behavior of AsyncEventEmitter is as far as possible and meaningful identical to 
+   * The API and behavior of AsyncEventEmitter is as far as possible and meaningful identical to
    * that of the native EventEmitter. However there are some important differences which should be noted.
    * - Data sent to event listeners (eg emit(data)) must always be zero or one argument, and can not be a function.
    * - Event listeners will always recieve the data object, which may or may not be undefined.
@@ -23,9 +23,14 @@ declare module "async-eventemitter" {
     [event: string]: AsyncListener<any, any>;
   }
 
+  /**
+   * An EventEmitter that supports serial execution of asynchronous event listeners.
+   * It also supports event listeners without callbacks (synchronous), as well as
+   * interrupting the call-chain (similar to the DOM's e.stopPropagation()).
+   */
   export default class AsyncEventEmitter<T extends EventMap> extends EventEmitter {
     /**
-     * Executes all listeners for the event in order with the supplied data argument. 
+     * Executes all listeners for the event in order with the supplied data argument.
      * The optional callback is called when all of the listeners are done.
      * @param event EventMap key (event name)
      * @param args EventMap parameters
@@ -35,7 +40,7 @@ declare module "async-eventemitter" {
     /**
      * Adds a listener to the beginning of the listeners array for the specified event.
      * @param event EventMap key (event name)
-     * @param listener EventMap value (event function) 
+     * @param listener EventMap value (event function)
      * @see https://www.npmjs.com/package/async-eventemitter#important-differences-between-asynceventemitter-the-native-eventemitter
      */
     first<E extends keyof T>(event: E & string, listener: T[E]): this;
@@ -43,7 +48,7 @@ declare module "async-eventemitter" {
      * Adds a listener at the specified index in the listeners array for the specified event.
      * @param event EventMap key (event name)
      * @param index Index to insert at
-     * @param listener EventMap value (event function) 
+     * @param listener EventMap value (event function)
      * @see https://www.npmjs.com/package/async-eventemitter#important-differences-between-asynceventemitter-the-native-eventemitter
      */
     at<E extends keyof T>(event: E & string, index: number, listener: T[E]): this;
@@ -51,14 +56,14 @@ declare module "async-eventemitter" {
      * Adds a listener before the target listener in the listeners array for the specified event.
      * @param event EventMap key (event name)
      * @param target Listener to insert before
-     * @param listener EventMap value (event function) 
+     * @param listener EventMap value (event function)
      */
     before<E extends keyof T>(event: E & string, target: T[E], listener: T[E]): this;
     /**
      * Adds a listener after the target listener in the listeners array for the specified event.
      * @param event EventMap key (event name)
      * @param target Listener to insert before
-     * @param listener EventMap value (event function) 
+     * @param listener EventMap value (event function)
      */
     after<E extends keyof T>(event: E & string, target: T[E], listener: T[E]): this;
 
