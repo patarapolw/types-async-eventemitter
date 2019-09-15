@@ -1,6 +1,6 @@
 {
   "name": "types-async-eventemitter",
-  "version": "0.2.4.1",
+  "version": "0.2.5",
   "description": "TypeScript definition for async-eventemitter",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
